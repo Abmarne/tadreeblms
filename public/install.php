@@ -108,6 +108,11 @@
             padding: 8px;
             margin-bottom: 10px;
         }
+
+        .dropdown-toggle::after {
+            display: none !important;
+
+    }
     </style>
 </head>
 
@@ -126,8 +131,8 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="nav-item px-3 dropdown">
-            <a class="nav-link dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+        <div class="nav-item px-3 ">
+            <a class="nav-link dropdown-toggle nav-link" href="#" role="button"
                 aria-haspopup="true" aria-expanded="false">
                 <span class="d-md-down-none">Language (EN)</span>
             </a>
