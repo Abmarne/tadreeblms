@@ -82,3 +82,7 @@ composer.phar
 resources/views/applications/admin/dashboard/index.blade.php
 app/Http/Controllers/Admin/Contracts/ContractsController.php
 composer.lock
+
+.migrations_done
+.seed_done
+
