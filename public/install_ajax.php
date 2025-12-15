@@ -362,7 +362,7 @@ sudo chmod 664 $envFile
             file_put_contents($installedFlag, 'installed');
 
             $env = file_get_contents($envFile);
-            if (!str_contains($env, 'APP_INSTALLED=')) {
+            if (!str_contains($env, 'APP_INSTALLED=') || !str_contains($env, 'APP_INSTALLED=false')) {
                 $env .= "\nAPP_INSTALLED=true\n";
                 file_put_contents($envFile, $env);
             }
