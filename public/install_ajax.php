@@ -310,8 +310,22 @@ try {
         case 'finish':
             file_put_contents($installedFlag, 'installed');
             $env = file_get_contents($envFile);
-            if (!str_contains($env, 'APP_INSTALLED=true')) $env .= "\nAPP_INSTALLED=true\n";
+            if (strpos($env, 'APP_INSTALLED=true') === false) {
+                $env .= "\nAPP_INSTALLED=true\n";
+            }
+            if (strpos($env, 'APP_INSTALLED=false') === false) {
+                $env .= "\nAPP_INSTALLED=true\n";
+            }
+            if (strpos($env, 'APP_INSTALLED=') === false) {
+                $env .= "\nAPP_INSTALLED=true\n";
+            }
+
+            //$env .= "\nAPP_URL=" .$siteUrl. "\n";
+
             file_put_contents($envFile, $env);
+
+            
+
             echo json_encode(['message' => "✔ Installation complete! <a href='/'>Open Application</a>", 'next' => null]);
             exit;
 

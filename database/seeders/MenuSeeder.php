@@ -23,14 +23,14 @@ class MenuSeeder extends Seeder
                 'url' => route('courses.all'),
                 'name' => 'Courses'
             ],
-            [
-                'url' => route('bundles.all'),
-                'name' => 'Bundles'
-            ],
-            [
-                'url' => asset('forums'),
-                'name' => 'Forums'
-            ],
+            // [
+            //     'url' => route('bundles.all'),
+            //     'name' => 'Bundles'
+            // ],
+            // [
+            //     'url' => asset('forums'),
+            //     'name' => 'Forums'
+            // ],
             [
                 'url' => asset('contact'),
                 'name' => 'Contact'
