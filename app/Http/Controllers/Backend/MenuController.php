@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Harimayco\Menu\Facades\Menu;
 use App\Http\Requests;
+use App\Models\AdminMenuItem;
 use Harimayco\Menu\Models\Menus;
 use Illuminate\Support\Facades\Artisan;
 
@@ -129,11 +130,11 @@ class MenuController extends Controller
                 $type = __('strings.backend.menu_manager.page');
             }
             $object = Page::find((int)$item['item_id']);
-            $menuitem = new MenuItems();
+            $menuitem = new AdminMenuItem();
             $menuitem->label = $item['labelmenu'];
             $menuitem->link = $item['link'] . '/' . $object->slug;
             $menuitem->menu = $item['idmenu'];
-            $menuitem->sort = MenuItems::getNextSortRoot($item['idmenu']);
+            $menuitem->sort = AdminMenuItem::getNextSortRoot($item['idmenu']);
             $menuitem->save();
         }
     }
@@ -148,14 +149,14 @@ class MenuController extends Controller
 
     public function deleteitemmenu()
     {
-        $menuitem = MenuItems::find(request()->input("id"));
+        $menuitem = AdminMenuItem::find(request()->input("id"));
 
         $menuitem->delete();
     }
 
     public function deletemenug()
     {
-        $menus = new MenuItems();
+        $menus = new AdminMenuItem();
         $getall = $menus->getall(request()->input("id"));
         if (count($getall) == 0) {
             $menudelete = Menus::find(request()->input("id"));
@@ -171,32 +172,36 @@ class MenuController extends Controller
     public function updateitem()
     {
         $arraydata = request()->input("arraydata");
+        //dd( $arraydata );
         if (is_array($arraydata)) {
             foreach ($arraydata as $value) {
-                $menuitem = MenuItems::find($value['id']);
+                $menuitem = AdminMenuItem::find($value['id']);
                 $menuitem->label = $value['label'];
+                $menuitem->label_ar = $value['label_ar'];
                 $menuitem->link = $value['link'];
                 $menuitem->class = $value['class'];
                 $menuitem->save();
             }
         } else {
-            $menuitem = MenuItems::find(request()->input("id"));
+            $menuitem = AdminMenuItem::find(request()->input("id"));
             $menuitem->label = request()->input("label");
+            $menuitem->label_ar = request()->input("label_ar");
             $menuitem->link = request()->input("url");
             $menuitem->class = request()->input("class");
             $menuitem->save();
         }
     }
 
+
     public function addcustommenu()
     {
 
-        $menuitem = new MenuItems();
+        $menuitem = new AdminMenuItem();
         $menuitem->label = request()->input("labelmenu");
         $menuitem->link = request()->input("linkmenu");
         $menuitem->menu = request()->input("idmenu");
 //        $menuitem->type = __('strings.backend.menu_manager.link');
-        $menuitem->sort = MenuItems::getNextSortRoot(request()->input("idmenu"));
+        $menuitem->sort = AdminMenuItem::getNextSortRoot(request()->input("idmenu"));
         $menuitem->save();
 
     }
@@ -205,7 +210,7 @@ class MenuController extends Controller
     {
         $main = NULL;
         $menu = Menus::find(request()->input("idmenu"));
-        $menu_bag_data = MenuItems::where('menu', '=', $menu)->get();
+        $menu_bag_data = AdminMenuItem::where('menu', '=', $menu)->get();
         $menu->name = str_slug(request()->input("menuname"));
         $menu->save();
         $value = 0;
@@ -221,7 +226,7 @@ class MenuController extends Controller
 //        dd(json_decode($menu_bag->value));
         if (is_array(request()->input("arraydata"))) {
             foreach (request()->input("arraydata") as $value) {
-                $menuitem = MenuItems::find($value["id"]);
+                $menuitem = AdminMenuItem::find($value["id"]);
                 $menuitem->parent = $value["parent"];
                 $menuitem->sort = $value["sort"];
                 $menuitem->depth = $value["depth"];
@@ -231,7 +236,7 @@ class MenuController extends Controller
         $menus = \Harimayco\Menu\Models\Menus::all();
         foreach ($menus as $menu) {
             if ($menu != NULL) {
-                $menuItems = \Harimayco\Menu\Models\MenuItems::where('menu', '=', $menu->id)->get();
+                $menuItems = AdminMenuItem::where('menu', '=', $menu->id)->get();
                 if ($menuItems != null) {
                     $allMenu = [];
                     foreach ($menuItems as $item) {

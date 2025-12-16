@@ -101,12 +101,21 @@ if (config('nav_menu') != 0) {
                                                 <input type="hidden" name="menuid_{{ $m->id }}" value="{{ $m->id }}">
 
                                                 <label>
-                                                    {{ __('strings.backend.menu_manager.label') }}
-                                                    <input type="text"
-                                                           id="idlabelmenu_{{ $m->id }}"
-                                                           value="{{ $m->label }}"
-                                                           class="form-control">
-                                                </label>
+                                                                    {{ __('strings.backend.menu_manager.label') }} (EN)
+                                                                    <input type="text"
+                                                                        id="idlabelmenu_{{ $m->id }}"
+                                                                        value="{{ $m->label }}"
+                                                                        class="form-control">
+                                                                </label>
+
+                                                                <label class="mt-2">
+                                                                    {{ __('strings.backend.menu_manager.label') }} (AR)
+                                                                    <input type="text"
+                                                                        id="idlabelmenu_ar_{{ $m->id }}"
+                                                                        value="{{ $m->label_ar ?? '' }}"
+                                                                        class="form-control"
+                                                                        dir="rtl">
+                                                                </label>
 
                                                 <label class="mt-2">
                                                     {{ __('strings.backend.menu_manager.url') }}
@@ -150,13 +159,17 @@ $.ajaxSetup({
 
 // UPDATE MENU ITEM (FIXED)
 function updateitem(id) {
-    let label = document.getElementById('idlabelmenu_' + id).value;
-    let url   = document.getElementById('url_menu_' + id).value;
-    let menu  = document.getElementById('idmenu').value;
+    let label_en = document.getElementById('idlabelmenu_' + id).value;
+    let label_ar = document.getElementById('idlabelmenu_ar_' + id).value;
+    let url      = document.getElementById('url_menu_' + id).value;
+    let menu     = document.getElementById('idmenu').value;
+
+    
 
     $.post("{{ route('hupdateitem') }}", {
         id: id,
-        label: label,
+        label: label_en,
+        label_ar: label_ar,
         url: url,
         idmenu: menu
     })
@@ -166,6 +179,7 @@ function updateitem(id) {
         alert('Update failed');
     });
 }
+
 
 // ADD TO MENU
 $(document).on('click', '.add-to-menu', function () {

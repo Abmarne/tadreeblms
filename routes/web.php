@@ -17,6 +17,11 @@ use Illuminate\Http\Request;
 //Route::get('/install', [InstallerController::class, 'index']);
 //Route::post('/install/run', [InstallerController::class, 'run']);
 
+use App\Http\Controllers\Backend\MenuController;
+
+Route::post('/hupdateitem', [MenuController::class, 'updateitem'])
+    ->name('hupdateitem');
+
 Route::get('syncCourseAssignmentAndSubscribeCourseData', function () {
     CustomHelper::syncCourseAssignmentAndSubscribeCourseData();
 });

@@ -164,7 +164,7 @@
                                     <li class="">
                                         <a href="{{ asset($menu->link) }}"
                                             class="nav-link {{ active_class(Active::checkRoute('frontend.user.dashboard')) }}"
-                                            id="menu-{{ $menu->id }}">{{ trans('custom-menu.' . $menu_name . '.' . str_slug($menu->label)) }}</a>
+                                            id="menu-{{ $menu->id }}">{{ config('app.locale') == 'ar' ? $menu->label_ar : $menu->label  }}</a>
                                     </li>
                                 @else
                                     @if((isset(auth()->user()->employee_type) && auth()->user()->employee_type == 'external') || !auth()->check())
