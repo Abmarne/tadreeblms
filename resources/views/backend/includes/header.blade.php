@@ -4,8 +4,8 @@
     </button>
     <a class="navbar-brand" href="{{ route('admin.dashboard') }}">
         <!-- <img class="navbar-brand-full" src="{{asset('storage/logos/'.config('logo_b_image'))}}"  height="25" alt="Square Logo"> -->
-        <img class="navbar-brand-full adminlogo" src="../../public/assets/img/logo.png"    alt="Square Logo">
-        <img class="navbar-brand-minimized adminlogo" src="../../public/assets/img/logo.png"  alt="Square Logo">
+        <img class="navbar-brand-full adminlogo" src="{{ asset('assets/img/logo.png') }}"    alt="Square Logo">
+        <img class="navbar-brand-minimized adminlogo" src="{{ asset('assets/img/logo.png') }}"  alt="Square Logo">
         <!-- <img class="navbar-brand-minimized" src="{{asset('storage/logos/'.config('logo_popup'))}}" height="30" alt="Square Logo"> -->
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">

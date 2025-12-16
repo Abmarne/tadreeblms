@@ -15,7 +15,7 @@ trait FileUploadTrait
     /**
      * File upload trait used in controllers to upload files
      */
-    public function saveFiles_local(Request $request)
+    public function saveFiles(Request $request)
     {
         try {
             //throw new Exception("Intentional error for testing."); //
@@ -75,7 +75,7 @@ trait FileUploadTrait
     }
 
 
-    public function saveFiles(Request $request)
+    public function saveFiles_s3(Request $request)
     {
         try {
             //throw new Exception("Intentional error for testing."); //

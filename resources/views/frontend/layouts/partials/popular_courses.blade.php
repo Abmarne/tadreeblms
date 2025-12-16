@@ -11,7 +11,7 @@
             <div id="course-slide-item" class="course-slide d-flex justify-content-center justify-content-lg-start">
                 @foreach($popular_courses as $item)
                     <div class="course-item-pic-text ">
-                        <div class="course-pic relative-position w-100 mb25" @if($item->course_image != '')  style="background-image: url({{asset('storage/uploads/'.$item->course_image)}})"
+                        <div class="course-pic relative-position w-100 mb25" @if($item->course_image != '')  style="background-image: url({{asset('img/news-1.png'.$item->course_image)}})"
                             @else
                             style="background-image: url({{asset('img/news-1.png')}})"
                             @endif>
