@@ -115,7 +115,7 @@ cd tadreeblms
 
 ---
 
-## 6️⃣ Setup Storage & Cache (Safe Copy)
+## 6️⃣ Setup Storage & Cache 
 
 ```bash
 sudo mkdir -p bootstrap/cache
@@ -162,7 +162,7 @@ sudo nano /etc/apache2/sites-available/tadreeblms.conf
 
 ```apache
 <VirtualHost *:80>
-    ServerName YOUR_SERVER_IP
+    ServerName YOUR_DOMAIN
     DocumentRoot /var/www/tadreeblms/public
 
     <Directory /var/www/tadreeblms/public>
@@ -188,7 +188,7 @@ sudo systemctl reload apache2
 Open in browser:
 
 ```
-http://YOUR_SERVER_IP
+http://YOUR_DOMAIN
 ```
 
 Complete the web-based onboarding to finish setup.
