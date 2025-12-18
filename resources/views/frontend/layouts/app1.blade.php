@@ -120,7 +120,7 @@
                        @else
                         <img src="{{ asset('assets/img/logo.png') }}" alt="logo" class="logoimg">
                        @endif
-                    </a>L
+                    </a>
                 </div>
           
             <button class="navbar-toggler ham-top-space" type="button" data-toggle="collapse"
