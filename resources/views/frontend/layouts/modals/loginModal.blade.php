@@ -110,13 +110,11 @@
                                 </a>
                             </div>
 
-                            @if(config('access.captcha.registration'))
-                                <div class="contact-info mb-2 text-center">
-                                    {!! no_captcha()->display() !!}
-                                    <input type="hidden" name="captcha_status" value="true">
-                                    <span id="login-captcha-error" class="text-danger"></span>
-                                </div>
-                            @endif
+                            <div class="contact-info mb-2">
+                                <label>Captcha: {{ session('captcha_question') }}</label>
+                                <input type="text" name="captcha" class="form-control mb-0" required>
+                                <span id="login-captcha-error" class="text-danger"></span>
+                            </div>
 
                             <div class="nws-button text-center white text-capitalize">
                                 <button type="submit">@lang('labels.frontend.modal.login_now')</button>
@@ -254,13 +252,11 @@
                                 @endforeach
                             @endif
 
-                            @if(config('access.captcha.registration'))
-                                <div class="contact-info mt-3 text-center">
-                                    {!! no_captcha()->display() !!}
-                                    <input type="hidden" id="captcha_status" name="captcha_status" value="true">
-                                    <span id="captcha-error" class="text-danger"></span>
-                                </div>
-                            @endif
+                            <div class="contact-info mb-2">
+                                <label>Captcha: {{ session('captcha_question') }}</label>
+                                <input type="text" name="captcha" class="form-control mb-0" required>
+                                <span id="captcha-error" class="text-danger"></span>
+                            </div>
 
                             <div class="nws-button text-center white text-capitalize">
                                 <button id="registerButton" type="submit">@lang('labels.frontend.modal.register_now')</button>
@@ -306,11 +302,7 @@
 
 
 
-    @if(config('access.captcha.registration'))
-        {{ no_captcha()->script() }}
-
-    @endif
-
+    
     <script>
         $(function () {
             $.ajaxSetup({
