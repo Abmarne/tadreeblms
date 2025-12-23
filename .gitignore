@@ -28,6 +28,8 @@ storage/logs/*.log
 # Ignore Laravel debugbar cache
 /storage/debugbar
 
+/storage/framework/sessions/*
+
 # Composer cache (PREVENT 100MB FILES)
 .composer/
 
