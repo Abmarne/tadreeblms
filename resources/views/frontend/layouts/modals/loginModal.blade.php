@@ -42,6 +42,11 @@
         border: none
     }
 
+    input.captcha {
+        width: 100px !important;
+        height: 30px !important;
+    }
+
     @media (max-width: 768px) {
         .modal-dialog {
             min-height: calc(100vh - 20px);
@@ -110,9 +115,9 @@
                                 </a>
                             </div>
 
-                            <div class="contact-info mb-2">
-                                <label>Captcha: {{ session('captcha_question') }}</label>
-                                <input type="text" name="captcha" class="form-control mb-0" required>
+                            <div class="contact-info mb-2 catcha-block">
+                                <label>Captcha: <span id="login-captcha-question"></span></label>
+                                <input type="text" name="captcha" class="captcha" required>
                                 <span id="login-captcha-error" class="text-danger"></span>
                             </div>
 
@@ -252,9 +257,9 @@
                                 @endforeach
                             @endif
 
-                            <div class="contact-info mb-2">
-                                <label>Captcha: {{ session('captcha_question') }}</label>
-                                <input type="text" name="captcha" class="form-control mb-0" required>
+                            <div class="contact-info mb-2 catcha-block">
+                                <label>Captcha: <span id="register-captcha-question"></span></label>
+                                <input type="text" name="captcha" class="captcha" required>
                                 <span id="captcha-error" class="text-danger"></span>
                             </div>
 
@@ -332,6 +337,10 @@
                         type: "GET",
                         url: "{{route('frontend.auth.login')}}",
                         success: function (response) {
+
+                            //console.log(response)
+
+                            $('#login-captcha-question').html(response.captcha_question)
                             $('#socialLinks').html(response.socialLinks)
                             const $modal = $('#myModal');
 
@@ -357,7 +366,7 @@
                         success: function (response) {
                             $('#socialLinks').html(response.socialLinks);
 
-            
+                             $('#register-captcha-question').html(response.captcha_question);
                             let form = $('#myRegisterModal').find('form')[0];
                             if (form) form.reset();
 
