@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PageSeeder::class);
         $this->call(ConfigSeeder::class);
         $this->call(SliderSeeder::class);
-        //$this->call(MenuSeeder::class);
+        $this->call(MenuSeeder::class);
         $this->call(CommissionRateSeeder::class);
         $this->call(EventsSeeder::class);
         $this->call(NewsSeeder::class);

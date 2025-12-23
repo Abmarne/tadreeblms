@@ -23,37 +23,37 @@ class ConfigSeeder extends Seeder
             1 =>
                 array(
                     'name' => 'primary_address',
-                    'value' => ' Last Vegas, 120 Graphic Street, US',
+                    'value' => ' India',
                     'status' => 1,
                 ),
             2 =>
                 array(
                     'name' => 'secondary_address',
-                    'value' => 'Califorinia, 88 Design Street, US',
+                    'value' => 'India',
                     'status' => 1,
                 ),
             3 =>
                 array(
                     'name' => 'primary_phone',
-                    'value' => '(100) 3434 55666',
+                    'value' => '(91) 9867 65754',
                     'status' => 1,
                 ),
             4 =>
                 array(
                     'name' => 'secondary_phone',
-                    'value' => '(20) 3434 9999',
+                    'value' => '(91) 7656 4353',
                     'status' => 1,
                 ),
             5 =>
                 array(
                     'name' => 'primary_email',
-                    'value' => 'info@neonlms.com',
+                    'value' => 'info@tadreeblms.com',
                     'status' => 1,
                 ),
             6 =>
                 array(
                     'name' => 'secondary_email',
-                    'value' => 'mail@neonlms.info',
+                    'value' => 'mail@tadreeblms.info',
                     'status' => 1,
                 ),
             7 =>

@@ -549,7 +549,13 @@ class CoursesController extends Controller
             $request->all();
             //dd($request->all());
 
-            $request = $this->saveFiles($request);
+            
+            $storage = config('filesystems.default');
+            if( $storage == 'local') {
+                $request = $this->saveFiles($request);
+            } else {
+                $request = $this->saveFiles_s3($request);
+            }
 
             $slug = "";
             if (($request->slug == "") || $request->slug == null) {
@@ -805,7 +811,12 @@ class CoursesController extends Controller
 
 
 
-        $request = $this->saveFiles($request);
+        $storage = config('filesystems.default');
+        if( $storage == 'local') {
+            $request = $this->saveFiles($request);
+        } else {
+            $request = $this->saveFiles_s3($request);
+        }
 
         //Saving  videos
         if ($request->media_type != "" || $request->media_type  != null) {

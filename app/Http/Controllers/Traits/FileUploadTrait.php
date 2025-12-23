@@ -15,7 +15,7 @@ trait FileUploadTrait
     /**
      * File upload trait used in controllers to upload files
      */
-    public function saveFiles_local(Request $request)
+    public function saveFiles(Request $request)
     {
         try {
             //throw new Exception("Intentional error for testing."); //
@@ -75,7 +75,7 @@ trait FileUploadTrait
     }
 
 
-    public function saveFiles(Request $request)
+    public function saveFiles_s3(Request $request)
     {
         try {
             //throw new Exception("Intentional error for testing."); //
@@ -234,7 +234,7 @@ trait FileUploadTrait
     }
 
 
-    public function saveAllFiles_local(Request $request, $downloadable_file_input = null, $model_type = null, $model = null)
+    public function saveAllFiles(Request $request, $downloadable_file_input = null, $model_type = null, $model = null)
     {
 
         try {
@@ -348,7 +348,7 @@ trait FileUploadTrait
         
     }
 
-    public function saveAllFiles(Request $request, $downloadable_file_input = null, $model_type = null, $model = null)
+    public function saveAllFiles_s3(Request $request, $downloadable_file_input = null, $model_type = null, $model = null)
     {
         //dd("1");
         try {
@@ -464,9 +464,14 @@ trait FileUploadTrait
                     $filename = time() . '-' . Str::slug($name) . '.' . $extension;
 
                     //dd($filename);
-                    //$file->move($uploadPath, $filename);
-                    $aws_url = CustomHelper::uploadToS3($file, $filename, null);
-                    $url = ''; //Storage::disk('s3')->url("videos/{$filename}");
+                    $storage = config('filesystems.default');
+                    if( $storage == 'local') {
+                        $aws_url = Storage::disk('s3')->url("videos/{$filename}");
+                    } else {
+                        $aws_url = CustomHelper::uploadToS3($file, $filename, null);
+                    }
+                   
+                    
                     //dd($aws_url);
                     Media::create([
                         'model_type' => $model_type,

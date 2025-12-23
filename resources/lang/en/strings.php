@@ -126,7 +126,7 @@ return array(
       'app_delete' => 'Delete',
       'all' => 'All',
       'trashed' => 'Trashed',
-      'boilerplate_link' => 'Delta Academy',
+      'boilerplate_link' => 'TadreebLMS',
       'continue' => 'Continue',
       'member_since' => 'Member since',
       'minutes' => ' minutes',

@@ -42,7 +42,7 @@
 
                     <div class="col-6 col-lg-3">
                         <div class="ftlogo">
-                        <img src="{{asset('assets/img/d-logo.png')}}"> 
+                        <img src="{{asset('assets/img/logo.png')}}"> 
                         </div>
                         </div>
 
@@ -54,7 +54,7 @@
                             </div>
                             <div class="contact-address">
                                 @if(($contact_data["primary_address"]["status"] == 1) || ($contact_data["secondary_address"]["status"] == 1))
-                                    <div class="contact-address-details">
+                                    <div class="contact-address-details">   
 
                                         <div class="address-icon relative-position text-center float-left">
                                             <i class="fas fa-map-marker-alt"></i>

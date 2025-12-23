@@ -98,7 +98,13 @@ class SliderController extends Controller
             'name' => 'required',
         ]);
 
-        $request = $this->saveFiles($request);
+        $storage = config('filesystems.default');
+        if( $storage == 'local') {
+            $request = $this->saveFiles($request);
+        } else {
+            $request = $this->saveFiles_s3($request);
+        }
+       
         $slide = Slider::findOrFail($id);
         if($request->image != ""){
             $slide->bg_image = $request->image;

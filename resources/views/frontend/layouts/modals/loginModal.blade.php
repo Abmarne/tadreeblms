@@ -200,7 +200,7 @@
                             </div>
 
                             <!-- Language Select -->
-                            <div class="contact-info mb-2">
+                            <div class="contact-info mb-2 plang">
                                 <label>Preferred Language</label><br>
 
                                 <label class="radio-inline mr-3 mb-0">

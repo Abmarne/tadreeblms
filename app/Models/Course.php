@@ -78,11 +78,16 @@ class Course extends Model
             return null;
         }
 
-       
-        return Storage::disk('s3')->temporaryUrl(
-            $value,
-            now()->addMinutes(60)
-        );
+        $storage = config('filesystems.default');
+        if( $storage == 'local') {
+            return $value;
+        } else {
+            return Storage::disk('s3')->temporaryUrl(
+                $value,
+                now()->addMinutes(60)
+            );
+        }
+        
 
         //return $value;
         

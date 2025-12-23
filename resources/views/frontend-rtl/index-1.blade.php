@@ -53,10 +53,10 @@
         <div class="outcategory caterow">
             <div> <h4>Our Category</h4> </div>
             <ul>
-                <li><img src="{{ asset('assets/img/icon1.png') }}" alt="Medical & Technical">   Medical & Technical </li>
-                 <li><img src="{{ asset('assets/img/icon2.png') }}" alt="Quality & Safety"> Quality & Safety </li>
-                  <li><img src="{{ asset('assets/img/icon3.png') }}" alt="Administrative Skills"> Administrative Skillshops </li>
-                   <li><img src="{{ asset('assets/img/icon4.png') }}" alt="Soft Skills"> Soft Skills </li>
+                <li><img src="{{ asset('assets/img/icon1.png') }}" alt="Category">   Category 1 </li>
+                 <li><img src="{{ asset('assets/img/icon2.png') }}" alt="Category"> Category 2 </li>
+                  <li><img src="{{ asset('assets/img/icon3.png') }}" alt="Category"> Category 3 </li>
+                   <li><img src="{{ asset('assets/img/icon4.png') }}" alt="Category"> Category </li>
             </ul>
         </div>
     </div>
@@ -93,8 +93,8 @@
         <div class="container">
            
                     {{-- <h2>@lang('What') <br> <strong>
-                            @lang('Delta Academy') </strong> @lang('Aims')</h2> --}}
-                    <h2>@lang('What Delta Academy Aims')</h2>
+                            @lang('TadreebLMS') </strong> @lang('Aims')</h2> --}}
+                    <h2>@lang('What TadreebLMS Aims')</h2>
                 
             <div class="row">
                 

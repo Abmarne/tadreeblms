@@ -85,4 +85,5 @@ composer.lock
 
 .migrations_done
 .seed_done
+installed
 

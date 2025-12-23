@@ -198,7 +198,7 @@
                             </li>
                         @else
                             <li class="menu-item-has-children ul-li-block px-1 sm-tb-space">
-                                <a href="#!">{{ $logged_in_user->name }}</a>
+                                <a href="#!" class="addminlink">{{ $logged_in_user->name }}</a>
                                 <ul class="sub-menu">
                                     @can('view backend')
                                         <li>

@@ -7,6 +7,7 @@
 
 .composer/
 
+readme.md
 .env
 .env.*
 !.env.example
