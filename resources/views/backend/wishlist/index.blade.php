@@ -29,7 +29,7 @@
 
                                 <th>@lang('labels.general.sr_no')</th>
                                 <th>@lang('Id')</th>
-                                <th>@lang('Course')</th>
+                                <th>@lang('CourseTitle')</th>
                                 <th>@lang('strings.backend.general.actions')</th>
                             </tr>
                             </thead>

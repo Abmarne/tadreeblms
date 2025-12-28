@@ -39,7 +39,7 @@ $(document).ready(function() {
     $('#myTable').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '/user/certificates',
+        ajax: '{{ route("admin.certificates.get") }}', 
         select: { info: false }, // 👈 hides the “0 rows selected” message
         iDisplayLength: 10,
 

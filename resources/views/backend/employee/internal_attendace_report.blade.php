@@ -410,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
             $('#due_date').val(null);
 
             $('#advace_filter').submit();
-            //location.reload(`{{ route('admin.employee.internal-attendence-report') }}`)
+            //location.reload(`{{ route('admin.employee.internal-attendence-report') }}`) local
         })
 
         $('#advace_filter').submit(function (e) {
@@ -454,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     "<'d-flex justify-content-between align-items-center mt-3'ip><'actions'>",
 
                 ajax: {
-                    url: "/user/internal-attendence-report",
+                    url: "{{ route('admin.employee.internal-attendence-report') }}",
                     type: "GET",
                     data: function (d) {
                         d.user_id = user_id;
@@ -473,7 +473,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         className: 'btn btn-sm btn-outline-primary',
                         action: function (e, dt, button, config) {
                             $.ajax({
-                                url: `/user/export-internal-attendence-report-as-csv`,
+                                url: `{{ route('admin.employee.internal-progress-report') }}`,
                                 method: "GET",
                                 data: {
                                     'course_id': course_id,

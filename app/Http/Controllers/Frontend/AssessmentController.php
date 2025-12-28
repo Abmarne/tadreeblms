@@ -433,20 +433,24 @@ class AssessmentController extends Controller
 
                     if($first_lesson) {
                         if($has_feedback == 0) {
-                            $return_url = '/lesson/' . $sb->course->id . '/' . $first_lesson->slug;
+                            $return_url = route('lessons.show',[$sb->course->id,$first_lesson->slug]);
                         } else {
-                            $return_url = '/lesson/' . $sb->course->id . '/' . $first_lesson->slug;
+                            $return_url = route('lessons.show',[$sb->course->id,$first_lesson->slug]);
                         }
+
+                         //dd(route('lessons.show',[$sb->course->id,$first_lesson->slug]));
+
                     } else {
                         if($has_feedback == 0) {
-                            $return_url = '/course/' . $sb->course->slug;
+                            $return_url = route('courses.show',[$sb->course->slug]);
                         } else {
-                            $return_url = '/course/' . $sb->course->slug;
+                            $return_url = route('courses.show',[$sb->course->slug]);
                         }
+                        
+
                     }
 
-                    
-
+                   
                 }           
                 
 

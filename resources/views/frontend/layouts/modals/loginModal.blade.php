@@ -162,6 +162,8 @@
                 <div class="tab-content">
                     <div class="tab-pane container active" id="register">
 
+                        <span id="register-captcha-error" class="captcha-error text-danger"></span>
+                        <span class="success-response text-success">{{ session()->get('flash_success') }}</span>
                         <form id="registerForm" class="contact_form" method="POST" action="#">
                             @csrf
                             @if($default_admin_email->email == 'admin@seeder.com')
@@ -459,7 +461,7 @@
                             $('#last-name-error').empty()
                             $('#email-error').empty()
                             $('#password-error').empty()
-                            $('#captcha-error').empty()
+                            $('#register-captcha-error').empty()
                             if (data.errors) {
                                 if (data.errors.first_name) {
                                     $('#first-name-error').html(data.errors.first_name[0]);
@@ -476,9 +478,17 @@
 
                                 var captcha = "g-recaptcha-response";
                                 if (data.errors[captcha]) {
-                                    $('#captcha-error').html(data.errors[captcha][0]);
+                                    $('#register-captcha-error').html(data.errors[captcha][0]);
                                 }
                             }
+
+                            console.log(data)
+
+                            if(data.success == false && data.error_type == 'captcha') {
+                                $('#register-captcha-error').html(data.message);
+                                $button.text("{{ __('labels.frontend.modal.register_now') }}").prop('disabled', false);
+                            }
+
                             if (data.success) {
                                 
                                 $('#registerForm')[0].reset();

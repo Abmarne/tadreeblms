@@ -398,6 +398,9 @@ Route::group(['middleware' => 'role:teacher'], function () {
 
 Route::group(['middleware' => 'role:student'], function () {
 
+    
+    Route::get('get-certificates', 'CertificateController@getCertificates')->name('certificates.get');
+
     Route::post('apply-certificate', 'CertificateController@applyCertificate')->name('certificates.apply');
     Route::get('certificates/generate/{course_id}/{user_id}', 'CertificateController@generateCertificate')->name('certificates.generate');
     //==== Certificates ====//
@@ -560,7 +563,7 @@ Route::get('get_external_trainee_info', 'Admin\EmployeeController@get_external_t
 
 Route::get('internal-attendence-report', 'Admin\EmployeeController@internal_attendence_report')->name('employee.internal-attendence-report');
 Route::get('assessement-answers/{user_id}/{course_id}', 'Admin\EmployeeController@view_user_asssessement_answers')->name('employee.assessement-answers');
-Route::get('export-internal-attendence-report-as-csv', 'Admin\EmployeeController@exportInternalAttendenceReportAsCsv');
+Route::get('export-internal-attendence-report-as-csv', 'Admin\EmployeeController@exportInternalAttendenceReportAsCsv')->name('employee.internal-progress-report');
 Route::get('export-trainees-as-csv', 'Admin\EmployeeController@exportTraineesAsCsv');
 Route::get('external-attendence-report', 'Admin\EmployeeController@external_attendence_report')->name('employee.external-attendence-report');
 

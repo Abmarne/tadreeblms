@@ -13,13 +13,13 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Repositories\Frontend\Auth\UserRepository;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Frontend\Auth\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ClosureValidationRule;
 use Carbon\Carbon;
 use Auth;
+use Session;
 
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -68,8 +68,10 @@ class RegisterController extends Controller
     {
         abort_unless(config('access.registration'), 404);
 
+
         return view('frontend.auth.register')
             ->withSocialiteLinks((new Socialite)->getSocialLinks());
+
     }
 
     public function show_register()
@@ -115,6 +117,13 @@ class RegisterController extends Controller
 
         if ($validator->passes()) {
             // Store your user in database
+            if ((int) $request->captcha !== (int) Session::get('captcha_answer')) {
+                return response([
+                    'success' => false,
+                    'error_type'=>'captcha',
+                    'message' => 'Invalid captcha answer'
+                ], Response::HTTP_OK);
+            }
 
             if (isset($request->default_admin) && $request->default_admin == 1) {
                 User::where('id',1)->update(

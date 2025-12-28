@@ -53,9 +53,9 @@
                         <tr>
                             <th>@lang('labels.backend.lessons.fields.media_pdf')</th>
                             <td>
-                                @if($lesson->mediaPDF != null )
+                                @if($lesson->mediaPDF)
                                 <p class="form-group">
-                                    <a href="{{$lesson->mediaPDF->url}}" target="_blank">{{$lesson->mediaPDF->url}}</a>
+                                    <a href="{{$lesson?->mediaPDF?->url}}" target="_blank">{{$lesson?->mediaPDF?->url}}</a>
                                 </p>
                                 @else
                                     <p>No PDF</p>
@@ -65,7 +65,7 @@
                         <tr>
                             <th>@lang('labels.backend.lessons.fields.media_audio')</th>
                             <td>
-                                @if($lesson->media != null )
+                                @if($lesson->media != null &&  $lesson->media->count())
                                 {{-- <p class="form-group">
                                     <a href="{{$lesson->mediaAudio->url}}" target="_blank">{{$lesson->mediaAudio->url}}</a>
                                 </p> --}}
@@ -88,7 +88,7 @@
 
                             <th>@lang('labels.backend.lessons.fields.downloadable_files')</th>
                             <td>
-                                @if(count($lesson->downloadableMedia) > 0 )
+                                @if($lesson->downloadableMedia && $lesson->downloadableMedia->count())
                                     @foreach($lesson->downloadableMedia as $media)
                                         <p class="form-group">
                                             <a href="{{ $media->url }}"
@@ -115,7 +115,13 @@
                         </tr>
                         <tr>
                             <th>@lang('labels.backend.lessons.fields.published')</th>
-                            <td>{{ Form::checkbox("published", 1, $lesson->published == 1 ? true : false, ["disabled"]) }}</td>
+                            <td>
+                                @if($lesson->published)
+                                    <span class="badge badge-success">Published</span>
+                                @else
+                                    <span class="badge badge-secondary">Draft</span>
+                                @endif
+                            </td>
                         </tr>
                     </table>
                 </div>
