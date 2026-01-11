@@ -33,6 +33,7 @@ use Illuminate\Support\Carbon;
 use App\Helpers\CustomValidation;
 use App\Models\CourseAssignmentToUser;
 use App\Models\courseInvitationAssignment;
+use App\Models\CourseModuleWeightage;
 use App\Models\Test;
 use Illuminate\Support\Facades\DB as FacadesDB;
 
@@ -464,13 +465,36 @@ class AssessmentAccountsController extends Controller
         return view('backend.assessment_accounts.add_new_account', compact('teachers', 'assignment', 'courses', 'category', 'questions', 'departments'));
     }
 
-    public function final_submit()
+    public function final_submit(Request $request, $id = null)
     {
-        return view('backend.assessment_accounts.final_submit');
+        $course = Course::find($id);
+        return view('backend.assessment_accounts.final_submit', [
+            'course_id' => $id ?? null,
+            'course' => $course ?? null
+        ]);
     }
 
-    public function final_submit_store()
+    public function final_submit_store(Request $request)
     {
+        //dd($request->all());
+        $course_id = $request->course_id ?? null;
+        if(isset($course_id)) {
+            CourseModuleWeightage::where('course_id', $course_id)->update(
+                [
+                    'weightage' => $request->course_module_weight
+                ]
+            );
+
+            Course::where('id', $course_id)->update(
+                [
+                    'current_step' => 'feedback-added',
+                    'published' => 1
+                ]
+            );
+
+        }
+        
+
         return redirect()->route('admin.courses.index')->withFlashSuccess(trans('You completed all the flow for Courses...'));
     }
 

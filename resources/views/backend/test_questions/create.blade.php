@@ -4,6 +4,10 @@
 @section('content')
 <!-- {!! Form::open(['method' => 'POST', 'route' => ['admin.questions.store'], 'files' => true,]) !!} -->
 
+
+@include('backend.includes.partials.course-steps', ['step' => 3, 'course_id' => $course_id, 'course' => $course ?? null ])
+
+
 <div class="pb-3 d-flex justify-content-between align-items-center">
        <h4>
            @lang('labels.backend.questions.create')
