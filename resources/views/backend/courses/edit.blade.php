@@ -247,7 +247,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 col-lg-2 col-md-12 form-group">
+                {{-- <div class="col-sm-12 col-lg-2 col-md-12 form-group">
                     {!! Form::label('price', trans('labels.backend.courses.fields.price'), [
                         'class' => 'control-label',
                     ]) !!}
@@ -257,7 +257,7 @@
                         'step' => 'any',
                         'pattern' => '[0-9]',
                     ]) !!}
-                </div>
+                </div> --}}
                 {{-- <div class="col-sm-12 col-lg-4 col-md-12">
                     <label for="control-label">@lang('Minimum percentage required to qualify')</label>
                     <input type="number" name="marks_required" class="form-control"
@@ -276,7 +276,7 @@
                                     'pattern' => '[0-9]',
                                 ]) !!}
                             </div-->
-                <div class="col-sm-12 col-lg-3 col-md-12 form-group">
+                <div class="col-sm-12 col-lg-4 col-md-12 form-group">
                     <div style="margin-bottom: 8px;">
                         Course Image
                     </div>
@@ -289,7 +289,7 @@
                     </div>
 
                 </div>
-                <div class="col-sm-12 col-lg-3 col-md-12  form-group">
+                <div class="col-sm-12 col-lg-4 col-md-12  form-group">
                     {!! Form::label('start_date', trans('labels.backend.courses.fields.start_date') . ' (yyyy-mm-dd) *', [
                         'class' => 'control-label',
                     ]) !!}
@@ -354,14 +354,14 @@
             </div>
 
             <div class="row mt-4">
-            <div class="col-sm-12 col-lg-4 col-md-12">
+            {{-- <div class="col-sm-12 col-lg-4 col-md-12">
                 <label>@lang('Minimum percentage required to qualify')</label>
                 <input readonly disabled type="number"
                     name="marks_required"
                     value="{{ $course?->latestModuleWeightage?->minimun_qualify_marks ?? '' }}"
                     class="form-control"
                     oninput="this.value=this.value.replace(/[^0-9]/g,''); if(this.value>100)this.value=100;">
-            </div>
+            </div> --}}
 
             <span>
                 @if($course->latestModuleWeightage?->normalized_weightage['LessonModule'] != 0)

@@ -255,7 +255,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12 col-lg-2 col-md-12 form-group">
+                {{-- <div class="col-sm-12 col-lg-2 col-md-12 form-group">
                     {!! Form::label('price', trans('labels.backend.courses.fields.price'), [
                         'class' => 'control-label',
                     ]) !!}
@@ -265,7 +265,7 @@
                         'step' => 'any',
                         'pattern' => '[0-9]',
                     ]) !!}
-                </div>
+                </div> --}}
                 
                 <!--div class="col-12 col-lg-4 form-group">
                                 {!! Form::label(
@@ -293,7 +293,7 @@
 </div>
 
                 </div>
-                <div class="col-sm-12 col-lg-3 col-md-12  form-group">
+                <div class="col-sm-12 col-lg-4 col-md-12  form-group">
                     {!! Form::label('start_date', trans('labels.backend.courses.fields.start_date') . ' (yyyy-mm-dd) *', [
                         'class' => 'control-label',
                     ]) !!}
@@ -358,77 +358,7 @@
                 </span>
             </div>
             
-            <div class="row mt-4">
-                <div class="col-sm-12 col-lg-4 col-md-12">
-                    <label for="control-label">@lang('Minimum percentage required to qualify')</label>
-                    <input type="number" name="marks_required" class="form-control"
-                        oninput="this.value = this.value.replace(/[^0-9]/g, ''); if(this.value > 100) this.value = 100; if(this.value < 1 && this.value != '') this.value = 1;">
-                </div>
-                <div class="col-md-12 col-lg-8 form-group" style="display: none;" >
-                    <div class="row">
-                        <div class="col-md-12  d-flex mt-3">
-                            <div class="col-md-6">
-                            <strong> Need to Included</strong>
-                            </div>
-                             <div class="col-md-6">
-                            <strong>Module Weightage (total should be 100%)</strong>
-                             </div>
-                        </div>
-                        <div class="col-md-12 mt-3" id="lesson-module-block">
-                            <div class="d-flex">
-                            <div class="col-md-6">
-                            <input class="course-module-inc" id="lesson-module" checked
-                                onclick="return false;" 
-                                type="checkbox" checked 
-                                name="course_module_inc[]" 
-                                value="LessonModule" />
-                                Lesson Module
-                            </div>
-                            <div class="col-md-6">
-                            <input type="text" class="sm-input text-end" 
-                            value="" 
-                            name="course_module_weight[LessonModule]"
-                            >
-                            </div> 
-                            </div>
-                        </div>
-                        <div class="col-md-12  d-flex mt-3">
-                            <div class="col-md-6">
-                            <input class="course-module-inc" 
-                            id="question-module" 
-                            type="checkbox" 
-                            checked 
-                            name="course_module_inc[]" 
-                            value="QuestionModule"
-                         /> Question Assesment Module 
-                            </div>
-                             <div class="col-md-6">
-                            <input type="text" class="sm-input text-end" 
-                            value="" name="course_module_weight[QuestionModule]" >
-                             </div>
-                        </div>
-                        <div class="col-md-12 d-flex mt-3">
-                            <div class="col-md-6">
-                        <input class="course-module-inc " checked type="checkbox"  id="feedbaack-module" name="course_module_inc[]" value="FeedbackModule" /> Feebback Module 
-                            </div>
-                         <div class="col-md-6">
-                         <input type="text" class="sm-input text-end" value="" name="course_module_weight[FeedbackModule]" >
-                         </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- <span class="course-type-desc">
-                    <span id="e-learning">
-                        E-Learning type course is a course which can be taken online.
-                    </span>
-                    <span id="live-online" style="display: none;">
-                        Live-Online type course is a course can be done on goole meet/Zoom link.
-                    </span>
-                    <span id="live-classroom" style="display: none;">
-                        Live-Classroom type course is a course can be happen on a specific classroom location.
-                    </span>
-                </span> --}}
-            </div>
+            
 
             {{-- <div class="row" id="online-course-material">
                 <div class="col-md-12 form-group">

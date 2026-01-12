@@ -3,13 +3,19 @@
 @section('title', __('Final Submit').' | '.app_name())
 
 @section('content')
-<form method="POST" action="{{ route('admin.assessment_accounts.final-submit-store') }}" enctype="multipart/form-data" class="form-horizontal">
+<form method="POST"
+      action="{{ route('admin.assessment_accounts.final-submit-store') }}"
+      enctype="multipart/form-data"
+      class="form-horizontal">
     @csrf
     <input type="hidden" name="course_id" value="{{ $course_id }}" />
     <div class="card">
 
+    <div class="card shadow-sm">
+
+        {{-- Header --}}
         <div class="card-header">
-            <h3 class="page-title d-inline mb-0">Final Page</h3>
+            <h4 class="mb-0">Final Submission</h4>
         </div>
 
 
@@ -93,33 +99,35 @@
             <div class="text-danger mt-2 d-none" id="weightError">
                 Total weightage must be exactly 100%
             </div>
+
+            <hr>
+
+            {{-- Confirmation --}}
+            <p class="mb-0">
+                Are you sure you want to submit this final page?
+            </p>
+
         </div>
     </div>
 
     <hr>
 
     <!-- Confirmation -->
-    <div class="row">
-        <div class="col-md-12">
-            <p class="mb-0">
-                Do you want to submit this final page?
-            </p>
-        </div>
-    </div>
+    
 
 </div>
 
 
-        <div class="form-group p-3">
-            <div class="col-4">
-                <a href="{{ route('admin.assessment_accounts.index') }}" class="btn btn-danger">
-                    {{ __('buttons.general.cancel') }}
-                </a>
+        {{-- Footer --}}
+        <div class="card-footer d-flex justify-content-between">
+            <a href="{{ route('admin.courses.index') }}"
+               class="btn btn-outline-danger">
+                Cancel
+            </a>
 
-                <button type="submit" class="btn btn-success">
-                    Submit
-                </button>
-            </div>
+            <button type="submit" class="btn btn-success">
+                Final Submit
+            </button>
         </div>
 
     </div>
