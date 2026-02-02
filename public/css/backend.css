@@ -23814,3 +23814,5 @@ button:focus{ outline: none !important; box-shadow: 0 0 0 !important;}
     padding: 8px;}
     .checkingListC textarea{ height: 120px !important;} 
   button{ border: none !important;}
+.form-control{ height: auto !important;}
+.addoptiontable { margin-top: 5px;}
