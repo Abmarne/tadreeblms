@@ -118,7 +118,7 @@ class LoginController extends Controller
             return response([
                 'success' => false,
                 'errors' => [
-                    'captcha' => [__('auth.invalid_captcha')],
+                    'captcha' => ['Invalid captcha'],
                 ],
             ], 422);
         }
